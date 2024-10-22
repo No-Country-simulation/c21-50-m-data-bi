@@ -26,6 +26,7 @@ module "glue_etl" {
   project            = var.project
   glue_job_name      = var.glue_job_name
   glue_database_name = var.glue_database_name
+  glue_table_name    = var.glue_table_name
   glue_crawler_name  = var.glue_crawler_name
   glue_job_bucket    = var.glue_job_bucket
   dataset_bucket     = var.dataset_bucket

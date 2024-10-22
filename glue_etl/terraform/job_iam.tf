@@ -1,5 +1,5 @@
-# Assume role for Glue
-data "aws_iam_policy_document" "glue_execution_assume_role_policy" {
+# Assume role for Glue Job
+data "aws_iam_policy_document" "glue_job_assume_role_policy" {
   statement {
     sid     = ""
     effect  = "Allow"
@@ -12,31 +12,24 @@ data "aws_iam_policy_document" "glue_execution_assume_role_policy" {
   }
 }
 
-# Read and write to specific S3 bucket
+# Policy document for S3 Glue Job bucket
 data "aws_iam_policy_document" "glue_etl_policy" {
   statement {
     effect    = "Allow"
     resources = ["arn:aws:s3:::${var.glue_job_bucket}/*"]
 
-    actions = ["s3:ListObject", "s3:PutObject", "s3:GetObject", "s3:DeleteObject"]
+    actions = ["s3:PutObject", "s3:GetObject", "s3:DeleteObject"]
   }
 
   statement {
     effect    = "Allow"
-    resources = ["arn:aws:s3:::${var.glue_job_bucket}/", "arn:aws:s3:::${var.dataset_bucket}/"]
+    resources = ["arn:aws:s3:::${var.glue_job_bucket}/"]
 
     actions = ["s3:ListObject"]
   }
-
-  statement {
-    effect    = "Allow"
-    resources = ["arn:aws:s3:::${var.dataset_bucket}/"]
-
-    actions = ["s3:GetObject"]
-  }
 }
 
-# IAM Policy to access the principal S3 bucket
+# IAM Policy attachment to S3 Glue Job bucket
 resource "aws_iam_policy" "glue_etl_access_policy" {
   name        = "s3GlueETLPolicy-${var.glue_job_bucket}"
   description = "Allows for running glue jobs in the glue console and access my S3 bucket."
@@ -46,17 +39,17 @@ resource "aws_iam_policy" "glue_etl_access_policy" {
   }
 }
 
-# IAM Role for Glue
-resource "aws_iam_role" "glue_service_role" {
+# IAM Role for Glue Job
+resource "aws_iam_role" "glue_job_service_role" {
   name               = "aws_glue_job_runner"
-  assume_role_policy = data.aws_iam_policy_document.glue_execution_assume_role_policy.json
+  assume_role_policy = data.aws_iam_policy_document.glue_job_assume_role_policy.json
   tags = {
     Application = var.project
   }
 }
 
-# Attach Glue IAM role to the principal S3 bucket 
+# Attach IAM role to the S3 Glue Job bucket 
 resource "aws_iam_role_policy_attachment" "glue_etl_permissions" {
-  role       = aws_iam_role.glue_service_role.name
+  role       = aws_iam_role.glue_job_service_role.name
   policy_arn = aws_iam_policy.glue_etl_access_policy.arn
 }
