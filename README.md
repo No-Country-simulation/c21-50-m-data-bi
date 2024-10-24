@@ -10,6 +10,7 @@
 - **Robert Charca** [LinkedIn](https://www.linkedin.com/in/robert-charca-123b28293/) | [GitHub](https://github.com/robertcharca)
 - **David Marimón** [LinkedIn](https://www.linkedin.com/in/daanmagi/) | [GitHub](https://github.com/DaAnMaGi)
 - **Gianfranco Limas** [LinkedIn](https://www.linkedin.com/in/gianfranco-limas/) | [GitHub](https://github.com/xlSosdee)
+- **Gerardo Carrizo** [LinkedIn](https://www.linkedin.com/in/gerardo-carrizo) | [GitHub](https://github.com/Gerardgfc)
 
 ## 3. Descripción del Proyecto
 Este proyecto tiene como objetivo desarrollar una herramienta de Machine Learning que ayude a los bancos a identificar posibles fraudes al momento de abrir nuevas cuentas. La herramienta predice la probabilidad de fraude y destaca las características clave que pueden ayudar en su detección. Además, se desplegará un modelo de Business Intelligence a través de un dashboard.
