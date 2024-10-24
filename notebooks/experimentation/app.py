@@ -65,11 +65,6 @@ def predict():
     # Verificar el número de características después de preparar el DataFrame
     print(f"Número de características después de preparar: {data_df_preparado.shape[1]}")
     
-    # Asegurarse de que el número de características coincida con lo que el modelo espera
-    if data_df_preparado.shape[1] != 50:
-        return jsonify({'error': f'Número de características incorrecto: se esperaban 50, pero se encontraron {data_df_preparado.shape[1]}'}), 400
-
-    # Preprocesar los datos según lo necesite tu modelo
     data_df_preprocesado = preprocesar_datos(data_df_preparado)
 
     # Hacer predicciones
