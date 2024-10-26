@@ -46,7 +46,7 @@ resource "aws_s3_object" "test_deploy_script_s3" {
 
 # Variables
 locals {
-  glue_src_path = "${path.root}/glue_etl/glue/"
+  glue_src_path = "${path.root}/glue_etl/"
 }
 
 variable "glue_job_bucket" {
