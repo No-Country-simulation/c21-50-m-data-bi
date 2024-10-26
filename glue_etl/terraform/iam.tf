@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "glue_etl_policy" {
 
   statement {
     effect    = "Allow"
-    resources = ["arn:aws:s3:::${var.glue_job_bucket}/"]
+    resources = ["arn:aws:s3:::${var.glue_job_bucket}/", "arn:aws:s3:::${var.dataset_bucket}/"]
 
     actions = ["s3:ListObject"]
   }
@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "glue_etl_policy" {
 
 # IAM Policy attachment to S3 Glue Job bucket
 resource "aws_iam_policy" "glue_etl_access_policy" {
-  name        = "s3GlueETLPolicy-${var.glue_job_bucket}"
+  name        = "s3-glue-etl-policy-${var.glue_job_bucket}"
   description = "Allows for running glue jobs in the glue console and access my S3 bucket."
   policy      = data.aws_iam_policy_document.glue_etl_policy.json
   tags = {
