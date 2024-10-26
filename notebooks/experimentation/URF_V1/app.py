@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 
 # Ruta al archivo del modelo
-modelo_path = os.path.join(os.getcwd(), 'modelo_fraudev3.pkl')
+modelo_path = os.path.join(os.getcwd(), 'modelo_fraudev1.pkl')
 
 # Cargar el modelo si existe
 if os.path.exists(modelo_path):
