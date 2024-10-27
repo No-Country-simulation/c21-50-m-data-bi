@@ -148,3 +148,27 @@ h2, h1, p {
     text-decoration: none;
     z-index: 3;
 }
+
+#result a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    pointer-events: auto; /* Asegura que el enlace sea interactivo */
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    position: relative; /* Necesario para que z-index funcione en un elemento inline-block */
+}
+
+#result a:hover {
+    background-color: #1e90ff;
+    color: white;
+    text-decoration: none;
+}

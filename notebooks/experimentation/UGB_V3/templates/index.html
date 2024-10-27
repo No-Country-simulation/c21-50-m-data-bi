@@ -60,12 +60,13 @@
                 clearInterval(dotAnimation);
                 loadingMessage.style.display = 'none';
 
-                if (data.output_file) {
-                    const downloadLink = `<a href="/download/${data.output_file}" download>Descargar resultados</a>`;
+                if (data.output_file) {                    
+                    const downloadLink = `<a href="/download/${data.output_file}" download>Descargar resultados</a>`;                    
                     document.getElementById('result').innerHTML = downloadLink;
                 } else {
                     document.getElementById('result').innerText = data.error;
                 }
+
             } catch (error) {
                 clearInterval(dotAnimation);
                 loadingMessage.style.display = 'none';
