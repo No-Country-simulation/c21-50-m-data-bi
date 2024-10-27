@@ -53,3 +53,14 @@ resource "aws_iam_role_policy_attachment" "glue_etl_permissions" {
   role       = aws_iam_role.glue_job_service_role.name
   policy_arn = aws_iam_policy.glue_etl_access_policy.arn
 }
+
+# Attach
+resource "aws_iam_role_policy_attachment" "glue_redshift_connection" {
+  role       = aws_iam_role.glue_job_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonRedshiftFullAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "glue_lake_attachment" {
+  role       = aws_iam_role.glue_job_service_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSLakeFormationDataAdmin"
+}
