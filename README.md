@@ -56,7 +56,27 @@ c21-50-m-data-bi/
 
 ```
 
-## 8. Referencias
+## 5. Configuración de Variables de Entorno
+
+Para configurar las credenciales de acceso de los usuarios, utiliza variables de entorno en un archivo `.env` en la raíz del proyecto. Estas credenciales son necesarias para que los asesores bancarios puedan acceder al formulario de carga de archivos de predicción.
+
+### Ejemplo de Archivo `.env`
+
+Crea un archivo llamado `.env` con la siguiente estructura para definir las credenciales de los usuarios y la clave secreta de la aplicación:
+
+```plaintext
+# Credenciales de acceso
+USUARIO_ASESOR1=asesor1
+CONTRASEÑA_ASESOR1=password123
+
+USUARIO_ASESOR2=asesor2
+CONTRASEÑA_ASESOR2=password456
+
+# Clave secreta de la aplicación
+SECRET_KEY=clave_secreta_segura
+```
+
+## 9. Referencias
 - Lanzito, Christina. (2024) Identity Fraud Cost Americans $43 Billion in 2023. AARP. [Enlace](https://www.aarp.org/money/scams-fraud/info-2024/identity-fraud-report.html)
 - OpenSpan. (S.f.). New Account Fraud.[Enlace](https://www.onespan.com/topics/new-account-fraud)
 - Microblink (2024). Fraude en cuentas nuevas: Comprender las señales de advertencia.[Enlace](https://microblink.com/es/resources/blog/fraude-en-cuentas-nuevas-comprender-las-senales-de-advertencia/#:~:text=A%20veces%20llamado%20%C2%ABfraude%20de,u%20obtenida%20mediante%20ingenier%C3%ADa%20social.)

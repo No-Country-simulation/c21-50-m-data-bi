@@ -1,11 +1,24 @@
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, request, jsonify, send_from_directory, render_template, render_template, redirect, url_for, session, flash
 import joblib
 import pandas as pd
 import os
 import sys
 from sklearn.preprocessing import StandardScaler
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 app = Flask(__name__)
+
+#Cargamos clave secreta
+app.secret_key = os.getenv('SECRET_KEY')
+
+# Definir usuarios permitidos utilizando variables de entorno
+usuarios_autorizados = {
+    os.getenv('USUARIO_ASESOR1'): os.getenv('PASSWORD_ASESOR1'),
+    os.getenv('USUARIO_ASESOR2'): os.getenv('PASSWORD_ASESOR2')
+}
 
 # Ruta al archivo del modelo
 modelo_path = os.path.join(os.getcwd(), 'modelo_fraudev3.pkl')
@@ -52,12 +65,31 @@ def preprocesar_datos(data_df):
     data_df_normalizado = escalador.fit_transform(data_df)
     return pd.DataFrame(data_df_normalizado, columns=data_df.columns)
 
-@app.route('/')
-def home():
+#Ruta de inicio (login)
+@app.route('/', methods = ['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if username in usuarios_autorizados and usuarios_autorizados[username] == password:
+            session['username'] = username
+            return redirect(url_for('upload_file'))
+        flash('Credenciales inválidas. Intente nuevamente.')
+    return render_template('login.html')
+
+#Ruta protegida para cargar archivos
+@app.route('/upload', methods = ['GET', 'POST'] )
+def upload_file():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     return render_template('index.html')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
     if 'file' not in request.files:
         return jsonify({'error': 'No hay parte de archivo en la solicitud'}), 400
     file = request.files['file']
@@ -88,6 +120,11 @@ def predict():
     resultados_df.to_csv(output_file_path, index=False)
 
     return jsonify({'message': 'Predicciones guardadas en CSV', 'output_file': output_file_name})
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 @app.route('/download/<path:filename>', methods=['GET'])
 def download_file(filename):
