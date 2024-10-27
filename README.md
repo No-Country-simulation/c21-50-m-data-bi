@@ -31,9 +31,9 @@ Las tecnologías que se usarán hasta el momento son los siguientes:
 - PowerBI / Tableau.
 
 
-## 7. Sobre el Proyecto
+## 5. Sobre el Proyecto
 
-### 7.1. Estructura del Proyecto
+### 5.1. Estructura del Proyecto
 ```
 c21-50-m-data-bi/
 ├─ data_pipeline/
@@ -56,7 +56,7 @@ c21-50-m-data-bi/
 
 ```
 
-## 5. Configuración de Variables de Entorno
+## 6. Configuración de Variables de Entorno
 
 Para configurar las credenciales de acceso de los usuarios, utiliza variables de entorno en un archivo `.env` en la raíz del proyecto. Estas credenciales son necesarias para que los asesores bancarios puedan acceder al formulario de carga de archivos de predicción.
 
@@ -76,7 +76,7 @@ CONTRASEÑA_ASESOR2=password456
 SECRET_KEY=clave_secreta_segura
 ```
 
-## 9. Referencias
+## 7. Referencias
 - Lanzito, Christina. (2024) Identity Fraud Cost Americans $43 Billion in 2023. AARP. [Enlace](https://www.aarp.org/money/scams-fraud/info-2024/identity-fraud-report.html)
 - OpenSpan. (S.f.). New Account Fraud.[Enlace](https://www.onespan.com/topics/new-account-fraud)
 - Microblink (2024). Fraude en cuentas nuevas: Comprender las señales de advertencia.[Enlace](https://microblink.com/es/resources/blog/fraude-en-cuentas-nuevas-comprender-las-senales-de-advertencia/#:~:text=A%20veces%20llamado%20%C2%ABfraude%20de,u%20obtenida%20mediante%20ingenier%C3%ADa%20social.)
