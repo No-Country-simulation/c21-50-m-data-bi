@@ -172,3 +172,173 @@ h2, h1, p {
     color: white;
     text-decoration: none;
 }
+
+
+.home-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0b0d18;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Barra de navegación */
+.navbar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal con dos columnas */
+.content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    gap: 50px;
+}
+
+/* Columna izquierda: texto */
+.text-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-section h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    max-width: 400px;
+    line-height: 1.2;
+}
+
+/* Columna derecha: logo y formulario de login */
+.login-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(20, 20, 45, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor para el logo y el título */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 50px;
+}
+
+.login-section h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+}
+
+/* Estilos para el formulario */
+.login-visual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-visual input[type="text"],
+.login-visual input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #ffffff;
+    color: #333;
+    outline: none;
+}
+
+.forgot-password {
+    font-size: 0.9em;
+    color: #a1a1a1;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.forgot-password:hover {
+    color: #ffffff;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff005c, #d400d4);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-button:hover {
+    background: linear-gradient(45deg, #d400d4, #ff005c);
+}
+
+/* Estilos para el enlace de Login para asesores */
+.advisor-login-link {
+    margin-top: 20px;
+    color: #ff005c;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.advisor-login-link:hover {
+    color: #d400d4;
+}
+
+/* Ocultar el título y expandir la columna derecha en pantallas móviles */
+@media (max-width: 600px) {
+    .text-section h1 {
+        display: none;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .login-section {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+    }
+}

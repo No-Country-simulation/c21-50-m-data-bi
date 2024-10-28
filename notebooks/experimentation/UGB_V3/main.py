@@ -65,8 +65,13 @@ def preprocesar_datos(data_df):
     data_df_normalizado = escalador.fit_transform(data_df)
     return pd.DataFrame(data_df_normalizado, columns=data_df.columns)
 
-#Ruta de inicio (login)
-@app.route('/', methods = ['GET', 'POST'])
+# Ruta de inicio para la página de inicio del banco
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+#Ruta de login de asesores
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -124,11 +129,14 @@ def predict():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 @app.route('/download/<path:filename>', methods=['GET'])
 def download_file(filename):
     return send_from_directory('resultados', filename, as_attachment=True)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=os.getenv('PORT',default=5000))
