@@ -12,8 +12,8 @@ resource "aws_redshiftserverless_namespace" "baofd_namespace" {
 
 # Redshift Serverless Workgroup
 resource "aws_redshiftserverless_workgroup" "baofd_workgroup" {
-  namespace_name = aws_redshiftserverless_namespace.baofd_namespace.namespace_name
-  workgroup_name = var.redshift_workgroup
+  namespace_name      = aws_redshiftserverless_namespace.baofd_namespace.namespace_name
+  workgroup_name      = var.redshift_workgroup
   publicly_accessible = true
 }
 

@@ -8,6 +8,11 @@ variable "dataset_bucket" {
   description = "Principal S3 bucket for the dataset needed in the project"
 }
 
+variable "data_ingestion_bucket" {
+  type        = string
+  description = "Principal S3 bucket for data ingestion"
+}
+
 # Glue variables
 variable "glue_job_name" {
   type        = string

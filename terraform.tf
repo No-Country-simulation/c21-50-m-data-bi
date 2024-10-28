@@ -15,9 +15,11 @@ provider "aws" {
 
 # S3 buckets for dataset and source code
 module "s3_data_ingestion" {
-  source          = "./terraform/s3"
-  glue_job_bucket = var.glue_job_bucket
-  dataset_bucket  = var.dataset_bucket
+  source                = "./terraform/s3"
+  project               = var.project
+  glue_job_bucket       = var.glue_job_bucket
+  dataset_bucket        = var.dataset_bucket
+  data_ingestion_bucket = var.data_ingestion_bucket
 }
 
 # Glue ETL process

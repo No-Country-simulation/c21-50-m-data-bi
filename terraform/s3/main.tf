@@ -6,6 +6,7 @@ resource "aws_s3_bucket" "baofd_dataset_bucket" {
   tags = {
     Name        = "Dataset bucket"
     Environment = "Dev"
+    project     = var.project
   }
 }
 
@@ -29,6 +30,7 @@ resource "aws_s3_bucket" "baofd_glue_job_bucket" {
   tags = {
     Name        = "Glue job bucket"
     Environment = "Dev"
+    project     = var.project
   }
 }
 
@@ -44,9 +46,38 @@ resource "aws_s3_object" "test_deploy_script_s3" {
   ]
 }
 
+# S3 bucket for data ingestion from API
+resource "aws_s3_bucket" "baofd_data_ingestion" {
+  bucket        = var.data_ingestion_bucket
+  force_destroy = true
+
+  tags = {
+    Name        = "Data ingestion bucket"
+    Environment = "Dev"
+    project     = var.project
+  }
+}
+
+resource "aws_s3_bucket_versioning" "baofd_data_ingestion_versioning" {
+  bucket = aws_s3_bucket.baofd_data_ingestion.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_object" "baofd_data_ingestion_dir" {
+  bucket                 = aws_s3_bucket_versioning.baofd_data_ingestion_versioning.id
+  server_side_encryption = "aws:kms"
+  key                    = "baofd-predicted-data/"
+}
+
 # Variables
 locals {
   glue_src_path = "${path.root}/glue_etl/"
+}
+
+variable "project" {
+  type = string
 }
 
 variable "glue_job_bucket" {
@@ -54,5 +85,9 @@ variable "glue_job_bucket" {
 }
 
 variable "dataset_bucket" {
+  type = string
+}
+
+variable "data_ingestion_bucket" {
   type = string
 }
