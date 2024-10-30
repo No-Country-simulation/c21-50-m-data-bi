@@ -106,6 +106,14 @@ def predict():
     except Exception as e:
         return jsonify({'error': f'Error al leer el archivo CSV: {str(e)}'}), 400
 
+    if 'id_client' not in data_df.columns:
+        return jsonify({'error': 'El archivo CSV debe incluir la columna "id_client"'}), 400
+
+    #Reseteo de índice para asegurar la alineación
+    id_clientes = data_df['id_client'].reset_index(drop = True)
+    #Preparación del DataFrame para el modelo eliminando 'id_client'
+    data_df = data_df.drop(columns = ['id_client'])
+
     data_df_preparado, error = preparar_dataframe(data_df)
     if error:
         return jsonify({'error': error}), 400
@@ -113,18 +121,26 @@ def predict():
     data_df_preprocesado = preprocesar_datos(data_df_preparado)
 
     prediccion = modelo.predict(data_df_preprocesado)
-    resultados_df = pd.DataFrame(data={'predicciones': prediccion})
+
+    #Asegurar que 'prediccion' sea un DataFrame con el mismo índice que 'id_clientes'
+    predicciones_df = pd.DataFrame(prediccion, columns=['predicciones']).reset_index(drop = True)
+
+    #Concatenar 'id_client' y 'predicciones'
+    resultados_df = pd.concat([id_clientes, predicciones_df], axis = 1)
+
+    #Para depuracion
+    print(resultados_df.head())
 
     output_folder = 'resultados'
     os.makedirs(output_folder, exist_ok=True)
 
     original_filename = os.path.splitext(file.filename)[0]
-    output_file_name = f"resultado_{original_filename}.csv"
+    output_file_name = f"resultado_{original_filename}.xlsx"
     output_file_path = os.path.join(output_folder, output_file_name)
 
-    resultados_df.to_csv(output_file_path, index=False)
+    resultados_df.to_excel(output_file_path, index=False)
 
-    return jsonify({'message': 'Predicciones guardadas en CSV', 'output_file': output_file_name})
+    return jsonify({'message': 'Predicciones guardadas en XLSX', 'output_file': output_file_name})
 
 @app.route('/logout')
 def logout():
@@ -134,9 +150,6 @@ def logout():
 @app.route('/download/<path:filename>', methods=['GET'])
 def download_file(filename):
     return send_from_directory('resultados', filename, as_attachment=True)
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=os.getenv('PORT',default=5000))
