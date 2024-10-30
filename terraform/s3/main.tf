@@ -68,7 +68,13 @@ resource "aws_s3_bucket_versioning" "baofd_data_ingestion_versioning" {
 resource "aws_s3_object" "baofd_data_ingestion_dir" {
   bucket                 = aws_s3_bucket_versioning.baofd_data_ingestion_versioning.id
   server_side_encryption = "aws:kms"
-  key                    = "baofd-predicted-data/"
+  key                    = "baofd-data-predicted/"
+}
+
+resource "aws_s3_object" "baofd_data_ingestion_registered_data" {
+  bucket                 = aws_s3_bucket_versioning.baofd_data_ingestion_versioning.id
+  server_side_encryption = "aws:kms"
+  key                    = "baofd-data-registered/"
 }
 
 # Variables
