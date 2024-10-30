@@ -3,24 +3,46 @@ import boto3
 import pytest
 
 from moto import mock_aws
-from app.send_res import save_data_from_request
+from dotenv import load_dotenv
+from app.send_res import upload_file_s3_ingestion
 
-@pytest.fixture
-def s3_setup():
+load_dotenv()
+
+test_data_ingestion_bucket = 'test-baofd-data-ingestion-ml-api'
+
+# Simulate S3 session with moto 
+@pytest.fixture(scope="function")
+def mock_session_s3():
     with mock_aws():
-        s3 = boto3.client('s3', region_name='us-east-1')
-        yield s3
+        session = boto3.Session(
+            aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+            aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
+            region_name=os.getenv('AWS_REGION')
+        )
 
-def test_save_data_from_request(s3_setup):
-    bucket_name = 'bank-account-opening-fraud-detection-data-ingestion-ml-api'
-    file_home = "/home/robert/Downloads/test_file_result.csv"
+        yield session.client('s3')
 
-    # s3_setup.create_bucket(Bucket=bucket_name)
+# Fixture to create S3 bucket for testing function
+@pytest.fixture
+def create_test_bucket(mock_session_s3):
+    mock_session_s3.create_bucket(Bucket=test_data_ingestion_bucket)
 
-    res = save_data_from_request(file_home, bucket_name)
+    response = mock_session_s3.list_buckets(Prefix='test_')
+    list_bucket_res = [k_buckets['Name'] for k_buckets in response['Buckets']]
 
-    response = s3_setup.list_objects_v2(Bucket=bucket_name)
+    assert test_data_ingestion_bucket in list_bucket_res, (
+        f"Bucket for testing {test_data_ingestion_bucket} has not been created. Available buckets: {list_bucket_res}"
+    )
+
+# Testing "save_data_from_request" function with mocked session
+def test_save_data_from_request(mock_session_s3, create_test_bucket):
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    file_home = os.path.join(current_path + '/docs/test_file_result.csv')
+
+    res = upload_file_s3_ingestion(mock_session_s3, file_home, test_data_ingestion_bucket)
+
+    response = mock_session_s3.list_objects_v2(Bucket=test_data_ingestion_bucket)
     
     assert res == True
     assert 'Contents' in response
-    # assert any(obj['Key'] == 'test_file_result.csv' for obj in response['Contents'])
+    assert any(obj['Key'] == 'baofd-predicted-data/test_file_result.csv' for obj in response['Contents'])
