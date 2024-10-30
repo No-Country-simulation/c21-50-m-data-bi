@@ -1,12 +1,12 @@
 import os
 import sys
 import joblib
-
 import pandas as pd
+
 from sklearn.preprocessing import StandardScaler
 
 # Ruta al archivo del modelo
-modelo_path = os.path.join(os.getcwd() + '/app/', 'modelo_fraudev3.pkl')
+modelo_path = os.path.join(os.getcwd() + '/app/modelo_fraudev3.pkl')
 
 # Cargar el modelo si existe
 if os.path.exists(modelo_path):
@@ -15,11 +15,11 @@ else:
     print(f"Archivo de modelo no encontrado. Path: {modelo_path}")
     sys.exit(1)
 
-# Inicializar el escalador
-escalador = StandardScaler()
+# Inicializar el scaler
+scaler = StandardScaler()
 
 # Definir las columnas necesarias (las que se usaron para entrenar el modelo)
-columnas_modelo = [
+model_cols = [
         'income', 'name_email_similarity',
        'current_address_months_count', 'customer_age', 'days_since_request',
        'bank_branch_count_8w', 'date_of_birth_distinct_emails_4w',
@@ -38,15 +38,33 @@ columnas_modelo = [
        'device_os_x11'
 ]
 
-def preparar_dataframe(df: pd.DataFrame):
-    # Verificar si las columnas requeridas están en el DataFrame
-    faltantes = [col for col in columnas_modelo if col not in df.columns]
-    if faltantes:
-        return None, f"Faltan las siguientes columnas: {', '.join(faltantes)}"
+# Verify if required columns are in the DataFrame
+def __prepare_dataframe(df: pd.DataFrame):
+    missing_cols = [col for col in model_cols if col not in df.columns]
+    if missing_cols:
+        return None, f"Missing columns: {', '.join(missing_cols)}"
     
-    df_filtrado = df[columnas_modelo].copy()
-    return df_filtrado, None
+    filtered_df = df[model_cols].copy()
+    return filtered_df, None
 
-def preprocesar_datos(data_df):
-    data_df_normalizado = escalador.fit_transform(data_df)
-    return pd.DataFrame(data_df_normalizado, columns=data_df.columns)
+# Pre-process DataFrame using StandardScaler
+def __preprocessing_data(data_df: pd.DataFrame) -> pd.DataFrame:
+    normalized_data_df = scaler.fit_transform(data_df)
+    return pd.DataFrame(normalized_data_df, columns=data_df.columns)
+
+def generate_data_from_prediction(data_df: pd.DataFrame) -> tuple[pd.DataFrame | None, dict | None]:
+    try:
+        # Prepare DataFrame for prediction
+        prepared_data_df, error = __prepare_dataframe(data_df)
+        if error:
+            return None, {'error': error}
+        
+        preprocessed_data_df = __preprocessing_data(prepared_data_df)
+
+        ml_prediction = modelo.predict(preprocessed_data_df)
+
+        res_df = pd.DataFrame(data={'predictions': ml_prediction})
+
+        return res_df, None
+    except Exception as err:
+        return None, {'error': str(err)}
