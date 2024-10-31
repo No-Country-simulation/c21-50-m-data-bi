@@ -135,5 +135,7 @@ SECRET_KEY=clave_secreta_segura
 - Fraud.net. (s.f.). New Account Fraud: Understanding the Tactics & Techniques of Scammers. [Enlace](https://fraud.net/n/new-account-fraud-understanding-the-tactics-techniques-of-scammers/)
 - Fraud.net. (s.f.). Detecting & Preventing New Account Fraud: Key Steps & Strategies. [Enlace](https://fraud.net/n/detecting-preventing-new-account-fraud-key-steps-strategies/)
 
+<p align="center">
+  <img src= 'src/No_Country.jpg'>
+</p>
 
-<img src= 'src/No_Country.jpg'>
