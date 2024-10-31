@@ -5,20 +5,20 @@ import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
 
-# Ruta al archivo del modelo
-modelo_path = os.path.join(os.getcwd() + '/app/modelo_fraudev3.pkl')
+# File path for model
+model_path = os.path.join(os.getcwd() + '/app/modelo_fraudev3.pkl')
 
-# Cargar el modelo si existe
-if os.path.exists(modelo_path):
-    modelo = joblib.load(modelo_path)
+# Load model if "pkl" file exists
+if os.path.exists(model_path):
+    modelo = joblib.load(model_path)
 else:
-    print(f"Archivo de modelo no encontrado. Path: {modelo_path}")
+    print(f"Archivo de modelo no encontrado. Path: {model_path}")
     sys.exit(1)
 
-# Inicializar el scaler
+# Initialize scaler
 scaler = StandardScaler()
 
-# Definir las columnas necesarias (las que se usaron para entrenar el modelo)
+# Define important columns which were used for traning
 model_cols = [
         'income', 'name_email_similarity',
        'current_address_months_count', 'customer_age', 'days_since_request',

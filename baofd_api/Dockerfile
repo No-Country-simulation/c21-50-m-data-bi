@@ -9,6 +9,6 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./app/ /code/app/
 COPY ./run.py /code/run.py
 
-EXPOSE 5000
+EXPOSE 80
 
 CMD [ "python", "run.py" ]

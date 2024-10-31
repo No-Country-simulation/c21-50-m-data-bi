@@ -14,13 +14,7 @@ test_data_ingestion_bucket = 'test-baofd-data-ingestion-ml-api'
 @pytest.fixture(scope="function")
 def mock_session_s3():
     with mock_aws():
-        session = boto3.Session(
-            aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
-            aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
-            region_name=os.getenv('AWS_REGION')
-        )
-
-        yield session.client('s3')
+        yield boto3.client('s3', region_name='us-east-1')
 
 # Fixture to create S3 bucket for testing function
 @pytest.fixture
@@ -39,10 +33,14 @@ def test_save_data_from_request(mock_session_s3, create_test_bucket):
     current_path = os.path.dirname(os.path.abspath(__file__))
     file_home = os.path.join(current_path + '/docs/test_file_result.csv')
 
-    res = upload_file_s3_ingestion(mock_session_s3, file_home, test_data_ingestion_bucket)
+    res = upload_file_s3_ingestion(mock_session_s3,
+                                   file_home,
+                                   test_data_ingestion_bucket,
+                                   'test-object-data-ingestion',
+                                   'test_file_result.csv')
 
     response = mock_session_s3.list_objects_v2(Bucket=test_data_ingestion_bucket)
     
     assert res == True
     assert 'Contents' in response
-    assert any(obj['Key'] == 'baofd-predicted-data/test_file_result.csv' for obj in response['Contents'])
+    assert any(obj['Key'] == 'test-object-data-ingestion/test_file_result.csv' for obj in response['Contents'])
