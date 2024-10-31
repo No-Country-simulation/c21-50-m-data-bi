@@ -134,3 +134,6 @@ SECRET_KEY=clave_secreta_segura
 - Arkose Lab (s.f.). Banking New Account Fraud Detection. [Enlace](https://www.arkoselabs.com/new-account-fraud/banking-new-account-fraud-detection-explained/)
 - Fraud.net. (s.f.). New Account Fraud: Understanding the Tactics & Techniques of Scammers. [Enlace](https://fraud.net/n/new-account-fraud-understanding-the-tactics-techniques-of-scammers/)
 - Fraud.net. (s.f.). Detecting & Preventing New Account Fraud: Key Steps & Strategies. [Enlace](https://fraud.net/n/detecting-preventing-new-account-fraud-key-steps-strategies/)
+
+
+<img src= 'src/No_Country.jpg'>
