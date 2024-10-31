@@ -77,6 +77,12 @@ resource "aws_s3_object" "baofd_data_ingestion_registered_data" {
   key                    = "baofd-data-registered/"
 }
 
+resource "aws_s3_object" "baofd_data_ingestion_download_data" {
+  bucket                 = aws_s3_bucket_versioning.baofd_data_ingestion_versioning.id
+  server_side_encryption = "aws:kms"
+  key                    = "baofd-data-ready-for-download/"
+}
+
 # Variables
 locals {
   glue_src_path = "${path.root}/glue_etl/"
