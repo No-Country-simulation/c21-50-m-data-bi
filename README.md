@@ -2,12 +2,12 @@
 
 <img src= 'src/fraude-financiero.jpg'>
 
-## 1. Objetivos
+## 📌 Objetivos
 - Definir cuáles son las variables que más pueden ayudar a predecir la probabilidad del fraude de la solicitud de una cuenta bancaria.
 - Enseñar a un modelo de Machine Learning que ayude, con las variables establecidas del modelo, a predecir la probabilidad de fraude de la solicitud de una cuenta bancaria.
 - Crear un dashboard que exponga las tendencias de las solicitudes fraudulentas de creación de cuentas bancarias.
 
-## 2. Integrantes
+## 📌 Integrantes
 
 <p align="center">
   <img src="src/integrantes.jpeg">
@@ -61,16 +61,16 @@
 
 </div>
 
-## 3. Descripción del Proyecto
+## 📌Descripción del Proyecto
 Este proyecto tiene como objetivo desarrollar una herramienta de Machine Learning que ayude a los bancos a identificar posibles fraudes al momento de abrir nuevas cuentas. La herramienta predice la probabilidad de fraude y destaca las características clave que pueden ayudar en su detección. Además, se desplegará un modelo de Business Intelligence a través de un dashboard.
 
-### 3.1. Problema
+### ➡️ Problema
 El fraude en la apertura de nuevas cuentas bancarias es una amenaza creciente para las instituciones financieras. Los ciberdelincuentes crean cuentas falsas utilizando datos robados o engañosos para cometer estafas, robos o lavado de dinero. Detectar este tipo de fraude es complicado porque ocurre al inicio de la relación del cliente con el banco, cuando hay poca información histórica disponible. Este proyecto busca mitigar estos riesgos sin afectar negativamente la experiencia del usuario al abrir una nueva cuenta.
 
-### 3.2. Solución
+### ➡️ Solución
 La solución propuesta es un sistema de Machine Learning que analiza datos de nuevas solicitudes de cuentas bancarias para identificar posibles casos de fraude. El modelo utiliza diversas características para predecir la probabilidad de fraude en tiempo real, proporcionando alertas tempranas a los bancos para que puedan tomar decisiones informadas sin afectar la experiencia del usuario legítimo. Además, se implementará un dashboard de Business Intelligence que permitirá a los usuarios visualizar las predicciones y obtener información clave sobre las características que influyen en la detección de fraude.
 
-## 4. Data Stack
+## 📌 Data Stack
 Las tecnologías que se usarán hasta el momento son los siguientes:
 - Python.
 - Numpy.
@@ -80,9 +80,9 @@ Las tecnologías que se usarán hasta el momento son los siguientes:
 - PowerBI / Tableau.
 
 
-## 5. Sobre el Proyecto
+## 📌 Sobre el Proyecto
 
-### 5.1. Estructura del Proyecto
+### ➡️ Estructura del Proyecto
 ```
 c21-50-m-data-bi/
 ├─ data_pipeline/
@@ -105,7 +105,7 @@ c21-50-m-data-bi/
 
 ```
 
-## 6. Configuración de Variables de Entorno
+## 📌 Configuración de Variables de Entorno
 
 Para configurar las credenciales de acceso de los usuarios, utiliza variables de entorno en un archivo `.env` en la raíz del proyecto. Estas credenciales son necesarias para que los asesores bancarios puedan acceder al formulario de carga de archivos de predicción.
 
@@ -125,7 +125,7 @@ CONTRASEÑA_ASESOR2=password456
 SECRET_KEY=clave_secreta_segura
 ```
 
-## 7. Referencias
+## 📌Referencias
 - Lanzito, Christina. (2024) Identity Fraud Cost Americans $43 Billion in 2023. AARP. [Enlace](https://www.aarp.org/money/scams-fraud/info-2024/identity-fraud-report.html)
 - OpenSpan. (S.f.). New Account Fraud.[Enlace](https://www.onespan.com/topics/new-account-fraud)
 - Microblink (2024). Fraude en cuentas nuevas: Comprender las señales de advertencia.[Enlace](https://microblink.com/es/resources/blog/fraude-en-cuentas-nuevas-comprender-las-senales-de-advertencia/#:~:text=A%20veces%20llamado%20%C2%ABfraude%20de,u%20obtenida%20mediante%20ingenier%C3%ADa%20social.)
