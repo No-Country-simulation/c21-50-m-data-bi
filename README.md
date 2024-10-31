@@ -1,4 +1,6 @@
-# Bank Fraud Detection Application
+# <h1 align=center>**`Bank Fraud Detection Application`**</h1>
+
+<img src= 'src/fraude-financiero.jpg'>
 
 ## 1. Objetivos
 - Definir cuáles son las variables que más pueden ayudar a predecir la probabilidad del fraude de la solicitud de una cuenta bancaria.
