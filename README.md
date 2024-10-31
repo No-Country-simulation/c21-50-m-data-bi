@@ -8,11 +8,19 @@
 - Crear un dashboard que exponga las tendencias de las solicitudes fraudulentas de creación de cuentas bancarias.
 
 ## 2. Integrantes
-- **Gabriel Céspedes** [LinkedIn](https://www.linkedin.com/in/gabriel-cespedes-alarcon/) | [GitHub](https://github.com/gabrielcespedes)
-- **Robert Charca** [LinkedIn](https://www.linkedin.com/in/robert-charca-123b28293/) | [GitHub](https://github.com/robertcharca)
-- **David Marimón** [LinkedIn](https://www.linkedin.com/in/daanmagi/) | [GitHub](https://github.com/DaAnMaGi)
-- **Gianfranco Limas** [LinkedIn](https://www.linkedin.com/in/gianfranco-limas/) | [GitHub](https://github.com/xlSosdee)
-- **Gerardo Carrizo** [LinkedIn](https://www.linkedin.com/in/gerardo-carrizo) | [GitHub](https://github.com/Gerardgfc)
+
+<p align="center">
+  <img src="src/integrantes.jpeg">
+</p>
+
+
+| Name                     | Rol                                       | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)|![LinkedIn](https://img.shields.io/badge/linkedin-%231DA1F2.svg?style=for-the-badge&logo=linkedin&logoColor=white)                |
+| ------------------------ | ----------------------------------------- | -------------------------------- |--------------------------------|
+| **Gabriel Céspedes**      | Data Scientist   |[gabrielcespedes](https://github.com/gabrielcespedes)  |[Gabriel Céspedes Alarcón](https://www.linkedin.com/in/gabriel-cespedes-alarcon/)
+| **Robert Charca**      | Data Engineer           |[robertcharca](https://github.com/robertcharca) |[Robert Charca](https://www.linkedin.com/in/robert-charca-123b28293/)|
+| **David Marimón**      | Data Analyst           |[DaAnMaGi](https://github.com/DaAnMaGi) |[David Andrés Marimón Gil](https://www.linkedin.com/in/daanmagi/)|
+| **Gianfranco Limas**      | Data Engineer           |[xlSosdee](https://github.com/xlSosdee) |[Gianfranco Limas](https://www.linkedin.com/in/gianfranco-limas/)|
+| **Gerardo Carrizo**      | Data Scientist           |[Gerardgfc](https://github.com/Gerardgfc) |[Gerardo Carrizo](https://www.linkedin.com/in/gerardo-carrizo/)|
 
 ## 3. Descripción del Proyecto
 Este proyecto tiene como objetivo desarrollar una herramienta de Machine Learning que ayude a los bancos a identificar posibles fraudes al momento de abrir nuevas cuentas. La herramienta predice la probabilidad de fraude y destaca las características clave que pueden ayudar en su detección. Además, se desplegará un modelo de Business Intelligence a través de un dashboard.
