@@ -14,13 +14,52 @@
 </p>
 
 
-| Name                     | Rol                                       | ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)|![LinkedIn](https://img.shields.io/badge/linkedin-%231DA1F2.svg?style=for-the-badge&logo=linkedin&logoColor=white)                |
-| ------------------------ | ----------------------------------------- | -------------------------------- |--------------------------------|
-| **Gabriel Céspedes**      | Data Scientist   |[gabrielcespedes](https://github.com/gabrielcespedes)  |[Gabriel Céspedes Alarcón](https://www.linkedin.com/in/gabriel-cespedes-alarcon/)
-| **Robert Charca**      | Data Engineer           |[robertcharca](https://github.com/robertcharca) |[Robert Charca](https://www.linkedin.com/in/robert-charca-123b28293/)|
-| **David Marimón**      | Data Analyst           |[DaAnMaGi](https://github.com/DaAnMaGi) |[David Andrés Marimón Gil](https://www.linkedin.com/in/daanmagi/)|
-| **Gianfranco Limas**      | Data Engineer           |[xlSosdee](https://github.com/xlSosdee) |[Gianfranco Limas](https://www.linkedin.com/in/gianfranco-limas/)|
-| **Gerardo Carrizo**      | Data Scientist           |[Gerardgfc](https://github.com/Gerardgfc) |[Gerardo Carrizo](https://www.linkedin.com/in/gerardo-carrizo/)|
+<div align="center">
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rol</th>
+      <th><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"></th>
+      <th><img src="https://img.shields.io/badge/linkedin-%231DA1F2.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Gabriel Céspedes</b></td>
+      <td>Project Manager (PM), Data Engineer, Data Analyst</td>
+      <td><a href="https://github.com/gabrielcespedes">gabrielcespedes</a></td>
+      <td><a href="https://www.linkedin.com/in/gabriel-cespedes-alarcon/">Gabriel Céspedes Alarcón</a></td>
+    </tr>
+    <tr>
+      <td><b>Robert Charca</b></td>
+      <td>ML Engineer and Data Scientist</td>
+      <td><a href="https://github.com/robertcharca">robertcharca</a></td>
+      <td><a href="https://www.linkedin.com/in/robert-charca-123b28293/">Robert Charca</a></td>
+    </tr>
+    <tr>
+      <td><b>David Marimón</b></td>
+      <td>ML Engineer and Data Scientist</td>
+      <td><a href="https://github.com/DaAnMaGi">DaAnMaGi</a></td>
+      <td><a href="https://www.linkedin.com/in/daanmagi/">David Andrés Marimón Gil</a></td>
+    </tr>
+    <tr>
+      <td><b>Gianfranco Limas</b></td>
+      <td>ML Engineer and Data Scientist</td>
+      <td><a href="https://github.com/xlSosdee">xlSosdee</a></td>
+      <td><a href="https://www.linkedin.com/in/gianfranco-limas/">Gianfranco Limas</a></td>
+    </tr>
+    <tr>
+      <td><b>Gerardo Carrizo</b></td>
+      <td>ML Engineer and Data Scientist</td>
+      <td><a href="https://github.com/Gerardgfc">Gerardgfc</a></td>
+      <td><a href="https://www.linkedin.com/in/gerardo-carrizo/">Gerardo Carrizo</a></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
 
 ## 3. Descripción del Proyecto
 Este proyecto tiene como objetivo desarrollar una herramienta de Machine Learning que ayude a los bancos a identificar posibles fraudes al momento de abrir nuevas cuentas. La herramienta predice la probabilidad de fraude y destaca las características clave que pueden ayudar en su detección. Además, se desplegará un modelo de Business Intelligence a través de un dashboard.
