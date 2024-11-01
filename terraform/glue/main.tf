@@ -1,27 +1,17 @@
-# Data Catalog
-resource "aws_glue_catalog_database" "baofd_database" {
-  name = var.glue_database_name
-}
-
-# Crawler structure
-resource "aws_glue_crawler" "baofd_dataset_structure" {
-  database_name = aws_glue_catalog_database.baofd_database.name
-  name          = var.glue_crawler_name
-  role          = aws_iam_role.glue_crawler_service_role.arn
-  table_prefix  = var.glue_table_name
-  tags = {
-    project = var.project
-  }
-
-  s3_target {
-    path = "s3://${var.dataset_bucket}/baofd-dataset/base-dataset/"
-  }
-}
-
 # CloudWatch Logs
 resource "aws_cloudwatch_log_group" "glue_etl_logs" {
   name              = "etl_process_glue_logs"
   retention_in_days = 1
+}
+
+# Glue connection with Redshift
+resource "aws_glue_connection" "glue_redshift_connection" {
+  name = var.glue_connection_name
+  connection_properties = {
+    JDBC_CONNECTION_URL = var.redshift_jdbc_connection
+    PASSWORD            = var.redshift_admin_username
+    USERNAME            = var.redshift_admin_password
+  }
 }
 
 # Glue Job
